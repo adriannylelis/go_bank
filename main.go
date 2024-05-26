@@ -3,16 +3,17 @@ package main
 import (
 	"fmt"
 
+	"github.com/alura/banco/clientes"
 	"github.com/alura/banco/contas"
 )
 
 func main() {
-	contaDaSilvia := contas.ContaCorrente{Titular: "Silvia", Saldo: 300}
-	contaDoGustavo := contas.ContaCorrente{Titular: "Gustavo", Saldo: 100}
+	clienteBruno := clientes.Titular{"Bruno", "123.123.123-12", "Desenvolvedor"}
+	contaDoBruno := contas.ContaCorrente{clienteBruno, 123, 123456, 100}
 
-	status := contaDoGustavo.Tranferir(-200, &contaDaSilvia)
 
-	fmt.Println(status)
-	fmt.Println(contaDaSilvia)
-	fmt.Println(contaDoGustavo)
+	println(contaDoBruno.Saldo)
+	fmt.Println(contaDoBruno.Sacar(50)) 
+
+	println(contaDoBruno.ObterSaldo())
 }
